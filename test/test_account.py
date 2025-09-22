@@ -7,7 +7,7 @@ from bank.account import Account
 
 class TestAccount(unittest.TestCase):
 
-# ----------------------------- Deposit Test  -----------------------------
+# -----------------------------  Deposit Test  -----------------------------
 
      def test_deposit(self):
 
@@ -16,7 +16,7 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(acc.get_balance(), 2000)
 
 
-# ----------------------------- Withdraw Test  -----------------------------
+# -----------------------------  Withdraw Test  -----------------------------
 
      def test_withdraw(self):
 
