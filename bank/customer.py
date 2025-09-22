@@ -1,6 +1,5 @@
 #--------------------------------------- INCLOUD INFORMATIONS ABOUT THE CUSTEOMER ---------------------------------------
 
-
 from bank.account import Account
 
 class Customer:
@@ -15,13 +14,13 @@ class Customer:
         self.checking_account = Account(account_id, "checking", checking_balance)
         self.savings_account = Account(account_id, "savings", savings_balance)
 
-# -------------------- Password --------------------
+# ----------------------------- Password -----------------------------
 
     def login(self, password):
      
         return self.password == password
     
-# ----------- Deposit (checking, saving) -----------
+# -------------------- Deposit (checking, saving) --------------------
 
     def deposit_to_checking(self, amount):
         return self.checking_account.deposit(amount)
@@ -30,7 +29,7 @@ class Customer:
     def deposit_to_savings(self, amount):
         return self.savings_account.deposit(amount)
 
-# ----------- Withdraw (checking, saving) -----------
+# -------------------- Withdraw (checking, saving) --------------------
 
     def withdraw_from_checking(self, amount):
         return self.checking_account.withdraw(amount)
@@ -38,3 +37,18 @@ class Customer:
 
     def withdraw_from_savings(self, amount):
         return self.savings_account.withdraw(amount)
+    
+# -------------------- Transfer (checking, saving) --------------------
+
+    def transfer_to_savings(self, amount):
+       
+        self.checking_account.withdraw(amount) 
+        self.savings_account.deposit(amount)
+
+
+    def transfer_to_checking(self, amount):
+       
+        self.savings_account.withdraw(amount)
+        self.checking_account.deposit(amount)
+
+# ----------------------------------------------------------------------
