@@ -51,8 +51,11 @@ class TestCustomer(unittest.TestCase):
 # ---------------------------- Transfer to Checking ----------------------------
 
 
+    def test_transfer_to_checking(self):
 
-
+        self.customer.transfer_to_checking(100)
+        self.assertEqual(self.customer.checking_account.get_balance(), 1600)
+        self.assertEqual(self.customer.savings_account.get_balance(), 200)
 
 
 # ------------------------------------------------------------------------------
