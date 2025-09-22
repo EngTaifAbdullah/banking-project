@@ -9,8 +9,8 @@ class TestCustomer(unittest.TestCase):
         self.customer = Customer("10001", "Taif", "Abdullah", "12345", 1500, 300) # Taif 's account 
 
 
-# ------------------------------------ Login ------------------------------------
 
+# ---------------------------------- Login Page  ----------------------------------
 
     def test_login_success(self):
         self.assertTrue(self.customer.login("12345"))
@@ -30,8 +30,9 @@ class TestCustomer(unittest.TestCase):
 # ----------------------------- Withdraw in Saving -----------------------------
 
 
-
-
+    def test_withdraw_savings(self):
+        self.customer.withdraw_from_savings(200)
+        self.assertEqual(self.customer.savings_account.get_balance(), 100)
 
 
 # ----------------------------- Transfer to Deposit -----------------------------
@@ -43,3 +44,10 @@ class TestCustomer(unittest.TestCase):
 
 # ----------------------------- Transfer to Saving -----------------------------
 
+
+
+
+# ------------------------------------------------------------------------------
+
+if __name__ == "__main__":
+    unittest.main()
