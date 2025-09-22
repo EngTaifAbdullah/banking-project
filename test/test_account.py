@@ -18,7 +18,7 @@ class TestAccount(unittest.TestCase):
 
 # ----------------------------- Withdraw Test  -----------------------------
 
-     def test_withdraw_normal(self):
+     def test_withdraw(self):
 
         acc = Account("10006", "savings", 500)
         acc.withdraw(200)

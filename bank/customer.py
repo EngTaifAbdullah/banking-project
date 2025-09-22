@@ -14,6 +14,7 @@ class Customer:
         self.checking_account = Account(account_id, "checking", checking_balance)
         self.savings_account = Account(account_id, "savings", savings_balance)
 
+
 # ----------------------------- Password -----------------------------
 
     def login(self, password):
@@ -22,14 +23,17 @@ class Customer:
     
 # -------------------- Deposit (checking, saving) --------------------
 
+
     def deposit_to_checking(self, amount):
         return self.checking_account.deposit(amount)
 
 
     def deposit_to_savings(self, amount):
         return self.savings_account.deposit(amount)
+    
 
 # -------------------- Withdraw (checking, saving) --------------------
+
 
     def withdraw_from_checking(self, amount):
         return self.checking_account.withdraw(amount)
@@ -38,7 +42,9 @@ class Customer:
     def withdraw_from_savings(self, amount):
         return self.savings_account.withdraw(amount)
     
+    
 # -------------------- Transfer (checking, saving) --------------------
+
 
     def transfer_to_savings(self, amount):
        
@@ -50,5 +56,6 @@ class Customer:
        
         self.savings_account.withdraw(amount)
         self.checking_account.deposit(amount)
+
 
 # ----------------------------------------------------------------------
