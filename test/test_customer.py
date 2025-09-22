@@ -8,12 +8,38 @@ class TestCustomer(unittest.TestCase):
     def setUp(self):
         self.customer = Customer("10001", "Taif", "Abdullah", "12345", 1500, 300) # Taif 's account 
 
-# ----------------------------- Login -----------------------------
+
+# ------------------------------------ Login ------------------------------------
+
 
     def test_login_success(self):
         self.assertTrue(self.customer.login("12345"))
 
     def test_login_fail(self):
         self.assertFalse(self.customer.login("dcfgvhbjnkftgy"))  # if the user enterd wrong password
-        
-# -----------------------------
+
+
+# ----------------------------- Deposit in Checking -----------------------------
+
+
+    def test_deposit_checking(self):
+        self.customer.deposit_to_checking(500)
+        self.assertEqual(self.customer.checking_account.get_balance(), 2000)
+
+
+# ----------------------------- Withdraw in Saving -----------------------------
+
+
+
+
+
+
+# ----------------------------- Transfer to Deposit -----------------------------
+
+
+
+
+
+
+# ----------------------------- Transfer to Saving -----------------------------
+
