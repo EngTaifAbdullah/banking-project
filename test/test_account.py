@@ -11,18 +11,18 @@ class TestAccount(unittest.TestCase):
 
      def test_deposit(self):
 
-        acc = Account("10001", "checking", 1000)
+        acc = Account("10001", "checking", 1500)
         acc.deposit(500)
-        self.assertEqual(acc.get_balance(), 1500)
+        self.assertEqual(acc.get_balance(), 2000)
 
 
 # ----------------------------- Withdraw Test  -----------------------------
 
      def test_withdraw(self):
 
-        acc = Account("10006", "savings", 500)
+        acc = Account("10006", "savings", 300)
         acc.withdraw(200)
-        self.assertEqual(acc.get_balance(), 300)
+        self.assertEqual(acc.get_balance(), 100)
 
 # ------------------------ Withdraw Overdraft Test  ------------------------
 

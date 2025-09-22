@@ -15,4 +15,5 @@ class TestCustomer(unittest.TestCase):
 
     def test_login_fail(self):
         self.assertFalse(self.customer.login("dcfgvhbjnkftgy"))  # if the user enterd wrong password
+        
 # -----------------------------
