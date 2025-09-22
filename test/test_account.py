@@ -7,7 +7,6 @@ from bank.account import Account
 
 class TestAccount(unittest.TestCase):
 
-
 # ----------------------------- Deposit Test  -----------------------------
 
      def test_deposit(self):
