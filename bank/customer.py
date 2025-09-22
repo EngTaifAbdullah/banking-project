@@ -26,5 +26,15 @@ class Customer:
     def deposit_to_checking(self, amount):
         return self.checking_account.deposit(amount)
 
+
     def deposit_to_savings(self, amount):
         return self.savings_account.deposit(amount)
+
+# ----------- Withdraw (checking, saving) -----------
+
+    def withdraw_from_checking(self, amount):
+        return self.checking_account.withdraw(amount)
+
+
+    def withdraw_from_savings(self, amount):
+        return self.savings_account.withdraw(amount)
