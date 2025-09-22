@@ -11,3 +11,13 @@ class Customer:
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
+
+        self.checking_account = Account(account_id, "checking", checking_balance)
+        self.savings_account = Account(account_id, "savings", savings_balance)
+
+# ----------- Password -----------
+
+    def login(self, password):
+     
+        return self.password == password
+  
