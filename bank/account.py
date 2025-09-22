@@ -30,3 +30,9 @@ def withdraw(self, amount):
     else:
         raise ValueError("Sorry! insufficient balance")
     return self.balance
+
+# ---------------------------------
+
+def get_balance(self):
+        
+        return self.balance

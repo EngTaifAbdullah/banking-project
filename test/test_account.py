@@ -7,45 +7,23 @@ from bank.account import Account
 
 class TestAccount(unittest.TestCase):
 
-    def setUp(self):
 
-        self.acc = Account("10001", "checking", 1000)
+# ----------------------------- Deposit Test  -----------------------------
 
-# -------------------------- Valid Deposit Test  --------------------------
+     def test_deposit(self):
 
-
-    def test_deposit_valid(self):
-
-        self.acc.deposit(500)
-        self.assertEqual(self.acc.get_balance(), 1500)
+        acc = Account("10001", "checking", 1000)
+        acc.deposit(500)
+        self.assertEqual(acc.get_balance(), 1500)
 
 
-# -------------------------- Invalid Deposit Test  --------------------------
+# ----------------------------- Withdraw Test  -----------------------------
 
+     def test_withdraw_normal(self):
 
-
-
-
-
-
-
-
-
-
-# -------------------------- Valid Withdraw Test  --------------------------
-
-    def test_withdraw_valid(self):
-        
-        self.acc.withdraw(900)
-        self.assertEqual(self.acc.get_balance(), 100)
-
-
-
-# -------------------------- Invalid Withdraw Test  --------------------------
-
-
-
-
+        acc = Account("10006", "savings", 500)
+        acc.withdraw(200)
+        self.assertEqual(acc.get_balance(), 300)
 
 # ------------------------ Withdraw Overdraft Test  ------------------------
 
