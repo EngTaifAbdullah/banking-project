@@ -1,4 +1,4 @@
-#--------------------------------------- INCLOUD THE TEST FOR CUSTOMER ---------------------------------------
+#----------------------------------------- INCLOUD THE TEST FOR CUSTOMER -----------------------------------------
 
 import unittest
 from bank.customer import Customer
@@ -20,7 +20,7 @@ class TestCustomer(unittest.TestCase):
         self.assertFalse(self.customer.login("dcfgvhbjnkftgy"))  # if the user enterd wrong password
 
 
-# ----------------------------- Deposit in Checking -----------------------------
+# ------------------------------ Deposit in Checking ------------------------------
 
 
     def test_deposit_checking(self):
@@ -29,7 +29,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(self.customer.checking_account.get_balance(), 2000)
 
 
-# ----------------------------- Withdraw in Saving -----------------------------
+# ------------------------------ Withdraw in Saving ------------------------------
 
 
     def test_withdraw_savings(self):
@@ -38,7 +38,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(self.customer.savings_account.get_balance(), 100)
 
 
-# ----------------------------- Transfer to Saving  -----------------------------
+# ------------------------------ Transfer to Saving  ------------------------------
 
 
     def test_transfer_to_savings(self):
@@ -48,7 +48,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(self.customer.savings_account.get_balance(), 800)
 
 
-# ---------------------------- Transfer to Checking ----------------------------
+# ----------------------------- Transfer to Checking -----------------------------
 
 
     def test_transfer_to_checking(self):
