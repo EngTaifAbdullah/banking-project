@@ -1,7 +1,6 @@
 #--------------------------------------- INCLOUD THE TEST FOR ACCOUNT  ---------------------------------------
 
 import unittest
-
 from bank.account import Account
 
 
@@ -12,7 +11,7 @@ class TestAccount(unittest.TestCase):
 
         self.acc = Account("10001", "checking", 1000)
 
-# -------------------------- Deposit Test  --------------------------
+# -------------------------- Valid Deposit Test  --------------------------
 
 
     def test_deposit_valid(self):
@@ -21,28 +20,47 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(self.acc.get_balance(), 1500)
 
 
-# -------------------------- Withdraw Test  --------------------------
+# -------------------------- Invalid Deposit Test  --------------------------
 
+
+
+
+
+
+
+
+
+
+
+# -------------------------- Valid Withdraw Test  --------------------------
 
     def test_withdraw_valid(self):
         
         self.acc.withdraw(900)
         self.assertEqual(self.acc.get_balance(), 100)
 
-# ---------------------- Withdraw Overdraft Test  ----------------------
+
+
+# -------------------------- Invalid Withdraw Test  --------------------------
+
+
+
+
+
+# ------------------------ Withdraw Overdraft Test  ------------------------
 
 
 
 
 
 
-# ------------------ Withdraw Deactivation Test ------------------------
+# -------------------- Withdraw Deactivation Test --------------------------
 
 
 
 
 
-# -----------------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 if __name__ == "__main__":
     unittest.main()
