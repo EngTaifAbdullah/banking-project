@@ -15,9 +15,16 @@ class Customer:
         self.checking_account = Account(account_id, "checking", checking_balance)
         self.savings_account = Account(account_id, "savings", savings_balance)
 
-# ----------- Password -----------
+# -------------------- Password --------------------
 
     def login(self, password):
      
         return self.password == password
-  
+    
+# ----------- Deposit (checking, saving) -----------
+
+    def deposit_to_checking(self, amount):
+        return self.checking_account.deposit(amount)
+
+    def deposit_to_savings(self, amount):
+        return self.savings_account.deposit(amount)
