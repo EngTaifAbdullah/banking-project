@@ -1,7 +1,7 @@
 #--------------------------------------- INCLOUD INTARFACE ---------------------------------------
 
 
-
+while True:
     print("1. Add Customer")
     print("2. Login")
     print("3. Deposit")

@@ -7,6 +7,9 @@ class Account:
         self.account_type = account_type
         self.balance = balance
 
+
+# ----------- Deposit -----------
+
     def deposit(self, amount):
 
         if amount > 0:
@@ -15,6 +18,5 @@ class Account:
         else:
             raise ValueError("The deposited amount MUST be greater than zero!")
         return self.balance
-
-
+    
 
