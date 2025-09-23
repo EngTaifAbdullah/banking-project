@@ -6,25 +6,44 @@ from bank.account import Account
 
 
 class TestAccount(unittest.TestCase):
+    
 
-# -----------------------------  Deposit Test  -----------------------------
+# -----------------------------  Deposit Test (Checking, Saving)  -----------------------------
 
-     def test_deposit(self):
+
+    def test_deposit_checking(self):
 
         acc = Account("10001", "checking", 1500)
         acc.deposit(500)
         self.assertEqual(acc.get_balance(), 2000)
 
 
-# -----------------------------  Withdraw Test  -----------------------------
+    def test_deposit_savings(self):
 
-     def test_withdraw(self):
+        acc = Account("10002", "savings", 300)
+        acc.deposit(200)
+        self.assertEqual(acc.get_balance(), 500)
 
-        acc = Account("10006", "savings", 300)
-        acc.withdraw(200)
-        self.assertEqual(acc.get_balance(), 100)
 
-# ------------------------ Withdraw Overdraft Test  ------------------------
+# -----------------------------  Withdraw Test (Checking, Saving)  -----------------------------
+
+
+    def test_withdraw_checking(self):
+
+        acc = Account("10003", "checking", 1500)
+        acc.withdraw(300)
+        self.assertEqual(acc.get_balance(), 1200)
+
+
+    def test_withdraw_savings(self):
+
+        acc = Account("10004", "savings", 300)
+        acc.withdraw(100)
+        self.assertEqual(acc.get_balance(), 200)
+
+
+# ---------------------------------- Withdraw Overdraft Test  ----------------------------------
+
 
 
 
@@ -33,7 +52,9 @@ class TestAccount(unittest.TestCase):
 
 
 
-# -------------------- Withdraw Deactivation Test --------------------------
+
+# ---------------------------------- Withdraw Deactivation Test ---------------------------------
+
 
 
 
@@ -42,7 +63,8 @@ class TestAccount(unittest.TestCase):
 
 
 
-# -------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     unittest.main()

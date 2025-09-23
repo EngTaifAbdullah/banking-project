@@ -17,10 +17,12 @@ class Customer:
 
 # ----------------------------- Password -----------------------------
 
+
     def login(self, password):
      
         return self.password == password
     
+
 # -------------------- Deposit (checking, saving) --------------------
 
 
@@ -56,6 +58,15 @@ class Customer:
        
         self.savings_account.withdraw(amount)
         self.checking_account.deposit(amount)
+
+
+# --------------------- Transfer to another User ---------------------
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------------------

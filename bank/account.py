@@ -13,6 +13,7 @@ class Account:
 
 # --------------------- Deposit ---------------------
 
+
     def deposit(self, amount):
 
         if amount > 0:
@@ -20,10 +21,11 @@ class Account:
         
         else:
             raise ValueError("The deposited amount must be greater than ZERO!")
-        
         return self.balance
 
+
 # --------------------- Withdraw ---------------------
+
 
     def withdraw(self, amount):
 
@@ -33,6 +35,7 @@ class Account:
         else:
            raise ValueError("Sorry! insufficient balance")
         return self.balance
+
 
 # ------------------------------------------------------
 
