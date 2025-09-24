@@ -63,10 +63,20 @@ class Customer:
 # --------------------- Transfer to another User ---------------------
 
 
+    def transfer_to_another_customer(self, target_customer, from_account, amount): 
+
+        if from_account == "checking":
+            self.checking_account.withdraw(amount)
+            target_customer.checking_account.deposit(amount)
 
 
+        elif from_account == "savings":
+            self.savings_account.withdraw(amount)
+            target_customer.savings_account.deposit(amount)
+            
 
-
+        else:
+            raise ValueError("Invalid account type")
 
 
 # ----------------------------------------------------------------------
