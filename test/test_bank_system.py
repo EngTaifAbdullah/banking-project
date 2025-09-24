@@ -1,5 +1,14 @@
-#--------------------------------------- INCLOUD THE TEST FOR BANK SYSTEM ---------------------------------------
+# ------------------------------------------ INCLOUD THE TEST FOR BANK SYSTEM  ---------------------------------------------
 
-# import unittest
 
-# from bank.bank_system import Bank_system
+import unittest
+import os
+from bank.bank_system import BankSystem
+
+
+class TestBankSystem(unittest.TestCase):
+
+
+
+
+# python -m test.test_bank_system

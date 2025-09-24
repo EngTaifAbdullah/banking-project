@@ -70,7 +70,7 @@ class Customer:
             target_customer.checking_account.deposit(amount)
 
 
-        elif from_account == "savings":
+        elif from_account == "savings":  # Here I added 2 way to transfer to another user (transfer from saving or checking)
             self.savings_account.withdraw(amount)
             target_customer.savings_account.deposit(amount)
             
