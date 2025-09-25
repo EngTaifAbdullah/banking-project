@@ -26,6 +26,96 @@ def main():
 
 
 
+        elif choice == "2":
+            account_id = input("Enter Account ID: ")
+            password = input("Enter Password: ")
+
+            customer = bank.find_customer(account_id)
+
+            if customer and customer.login(password):
+                print(f"\nWelcome ( {customer.first_name} {customer.last_name} ) Again ✨ !")
+
+                while True:
+                    print("\n----------------------------------- Customer Menu -----------------------------------")
+                    print("1. View Balances")
+                    print("2. Deposit to Checking")
+                    print("3. Deposit to Savings")
+                    print("4. Withdraw from Checking")
+                    print("5. Withdraw from Savings")
+                    print("6. Transfer to Another Customer")
+                    print("7. Logout")
+                    print("-----------------------------------")
+                    sub_choice = input("🔹 Please Enter the service: ")
+
+                    try:
+                        if sub_choice == "1":
+                            print(f"Checking Balance: {customer.checking_account.get_balance()} 💵")
+                            print(f"Savings Balance: {customer.savings_account.get_balance()} 💵")
+                           
+
+
+
+                        elif sub_choice == "2":
+                            amount = int(input("Enter Amount to Deposit in Checking: "))
+                            customer.deposit_to_checking(amount)
+                            bank._rewrite_all_customers()
+                            print("Deposit Successful ✅ !")
+
+
+
+                        elif sub_choice == "3":
+                            amount = int(input("Enter Amount to Deposit in Savings: "))
+                            customer.deposit_to_savings(amount)
+                            bank._rewrite_all_customers()
+                            print("Deposit Successful ✅ !")
+
+
+
+                        elif sub_choice == "4":
+                            amount = int(input("Enter Amount to Withdraw from Checking: "))
+                            customer.withdraw_from_checking(amount)
+                            bank._rewrite_all_customers()
+                            print("Withdrawal Successful ✅ !")
+
+
+
+                        elif sub_choice == "5":
+                            amount = int(input("Enter Amount to Withdraw from Savings: "))
+                            customer.withdraw_from_savings(amount)
+                            bank._rewrite_all_customers()
+                            print("Withdrawal Successful ✅ !")
+
+
+
+                        elif sub_choice == "6":
+                            target_id = input("📍 Enter Target Customer ID: ")
+                            from_account = input("📍 Transfer from (checking/savings): ").lower()
+                            amount = int(input("📍 Enter Amount to Transfer: "))
+                            bank.transfer_between_customers(customer.account_id, target_id, from_account, amount)
+                            print("Transfer Successful ✅ !")
+
+
+
+                        elif sub_choice == "7":
+                            print("Logged out")
+                            break
+
+                        else:
+                            print("Invalid choice, try again ❌")
+
+                    except Exception as e:
+                        print(f"❌ Error: {e}")
+
+            else:
+                print("Invalid account ID or password ❌")
+
+        elif choice == "3":
+            print("Goodbye 👋")
+            break
+
+        else:
+            print("Invalid choice, try again ❌")
+
 if __name__ == "__main__":
     main()
 
