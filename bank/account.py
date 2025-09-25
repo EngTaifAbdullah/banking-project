@@ -16,6 +16,9 @@ class Account:
 
     def deposit(self, amount):
 
+        if not (self,amount):
+         raise ValueError("errroorr")
+      
         if amount > 0:
             self.balance += amount
         

@@ -1,8 +1,9 @@
 account_id,first_name,last_name,password,checking_balance,savings_balance
-10001,Taif,Abdullah,taif2003,1100,500
+10001,Taif,Abdullah,taif2003,1500,500
 10002,Rose,Abdullah,idh3FGd,3000,500
 10003,Lana,Mohamed,12345,500,500
 10004,Shahad,Ahmed,5678,9000,2000
 10005,Layan,Majed,1234,900,100
 10006,Conner,Goerge,123123,700,0
 10007,Asti,Mohammed,1111,200,200
+10008,Nawaf ,Alanzi,123,50,20
