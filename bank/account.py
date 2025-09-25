@@ -53,15 +53,12 @@ class Account:
           raise ValueError("Withdrawal denied!! Limit -100 reached. Account Deactivated.")
 
 
-
         self.balance = new_balance
         self.overdraft_count += 1
-
 
         if self.overdraft_count >= 2:
            self.active = False
  
-          
 
         return self.balance
 

@@ -15,7 +15,7 @@ class Customer:
 
 
 
-# ----------------------------- Password -----------------------------
+# ------------------------------------- Password -------------------------------------
 
 
     def login(self, password):
@@ -25,7 +25,7 @@ class Customer:
      return self.password == password
 
 
-# -------------------- Deposit (checking, saving) --------------------
+# ----------------------------- Deposit (checking, saving) -----------------------------
 
 
     def deposit_to_checking(self, amount):
@@ -36,7 +36,7 @@ class Customer:
         return self.savings_account.deposit(amount)
     
 
-# -------------------- Withdraw (checking, saving) --------------------
+# ----------------------------- Withdraw (checking, saving) -----------------------------
 
 
     def withdraw_from_checking(self, amount):
@@ -47,7 +47,7 @@ class Customer:
         return self.savings_account.withdraw(amount)
     
     
-# -------------------- Transfer (checking, saving) --------------------
+# ----------------------------- Transfer (checking, saving) -----------------------------
 
 
     def transfer_to_savings(self, amount):
@@ -62,7 +62,7 @@ class Customer:
         self.checking_account.deposit(amount)
 
 
-# --------------------- Transfer to another User ---------------------
+# ----------------------------- Transfer to another User -----------------------------
 
 
     def transfer_to_another_customer(self, target_customer, from_account, amount): 
@@ -81,6 +81,6 @@ class Customer:
             raise ValueError("Invalid account type")
 
 
-# ----------------------------------------------------------------------
+# ------------------------------------------------------------------------------------
 
 # python -m bank.customer
