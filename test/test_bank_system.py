@@ -48,8 +48,8 @@ class TestBankSystem(unittest.TestCase):
 
         self.bank.transfer_between_customers(c1.account_id, c2.account_id, "checking", 200)
 
-        self.assertEqual(c1.checking_account.get_balance(), 800)  # 1000 - 200
-        self.assertEqual(c2.checking_account.get_balance(), 500)  # 300 + 200
+        self.assertEqual(c1.checking_account.get_balance(), 800)  
+        self.assertEqual(c2.checking_account.get_balance(), 500)  
 
 
 

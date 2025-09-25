@@ -45,23 +45,35 @@ class TestAccount(unittest.TestCase):
 # ---------------------------------- Withdraw Overdraft Test  ----------------------------------
 
 
+    def test_withdraw_overdraft_once(self):
+
+        acc = Account("10005", "checking", 50)
+        acc.withdraw(70)  
+        self.assertEqual(acc.get_balance(), -55)
+        self.assertEqual(acc.overdraft_count, 1)
 
 
-                       
-# I'm still working in this part
 
+    def test_withdraw_overdraft_twice(self):
 
+        acc = Account("10006", "checking", 0)
+        acc.withdraw(50)  
+        acc.withdraw(10)  
+
+        with self.assertRaises(ValueError):
+            acc.withdraw(5)
 
 
 # ---------------------------------- Withdraw Deactivation Test ---------------------------------
 
 
+    def test_account_deactivated(self):
 
-
-
-# I'm still working in this part
-
-
+        acc = Account("10007", "checking", 100, active=False)
+        with self.assertRaises(ValueError):
+            acc.deposit(50)
+        with self.assertRaises(ValueError):
+            acc.withdraw(10)
 
 
 # -----------------------------------------------------------------------------------------------

@@ -1,9 +1,16 @@
-account_id,first_name,last_name,password,checking_balance,savings_balance
-10001,Taif,Abdullah,taif2003,1500,500
-10002,Rose,Abdullah,idh3FGd,3000,500
-10003,Lana,Mohamed,12345,500,500
-10004,Shahad,Ahmed,5678,9000,2000
-10005,Layan,Majed,1234,900,100
-10006,Conner,Goerge,123123,700,0
-10007,Asti,Mohammed,1111,200,200
-10008,Nawaf ,Alanzi,123,50,20
+account_id,first_name,last_name,password,checking_balance,savings_balance,active,overdraft_count
+10001,Taif,Abdullah,taif2003,1500,500,True,0
+10002,Rose,Abdullah,idh3FGd,3000,500,True,0
+10003,Lana,Mohamed,12345,500,500,True,0
+10004,Shahad,Ahmed,5678,9000,2000,True,0
+10005,Layan,Majed,1234,900,100,True,0
+10006,Conner,Goerge,123123,700,0,True,0
+10007,Asti,Mohammed,1111,300,200,True,0
+10008,Nawaf,Alanzi,123,50,20,True,0
+10009,Mama,Saleh,123,300,200,True,0
+10010,Goerge,Alanzi,000,300,20300,True,2
+10011,Sami,Abdullah,111,-86,0,False,2
+10012,leen,Khalid,111,-36,500,False,1
+10013,Amal,Ahmad,222,-90,50,False,2
+10014,Abdullah,Alanzi,111,89900,20000,True,0
+10015,Naif,Mohammed,111,-41,200,False,2

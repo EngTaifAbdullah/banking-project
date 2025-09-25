@@ -38,27 +38,30 @@ class Account:
         if amount <= 0:
             raise ValueError("Withdrawal must be greater than ZERO!")
 
+        if self.balance >= amount:
+           self.balance -= amount
+           return self.balance
 
-        if self.balance - amount < -100:       # this is overdraft logic
-            raise ValueError("Withdrawal denied !! (limit -100 reached)")
+
+        fee = 35
+        total = amount + fee
+        new_balance = self.balance - total
 
 
-        if self.balance < amount:              # this is overdraft case
-            if self.overdraft_count >= 2:
+        if new_balance < -100:  
+          self.active = False
+          raise ValueError("Withdrawal denied!! Limit -100 reached. Account Deactivated.")
 
-                raise ValueError("Error!! Overdraft limit reached")
-            
-            fee = 35
-            total = amount + fee
 
-            if self.balance - total < -100:
-                raise ValueError("Withdrawal denied !! (limit -100 reached)")
-            
-            self.balance -= total
-            self.overdraft_count += 1
 
-        else:
-            self.balance -= amount
+        self.balance = new_balance
+        self.overdraft_count += 1
+
+
+        if self.overdraft_count >= 2:
+           self.active = False
+ 
+          
 
         return self.balance
 

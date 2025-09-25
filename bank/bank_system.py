@@ -33,17 +33,19 @@ class BankSystem:
             return
 
         with open(self.filename, mode="r") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                customer = Customer(
-                    row["account_id"],
-                    row["first_name"],
-                    row["last_name"],
-                    row["password"],
-                    int(row["checking_balance"]),
-                    int(row["savings_balance"])
-                )
-                self.customers[row["account_id"]] = customer
+         reader = csv.DictReader(file)
+         for row in reader:
+            customer = Customer(
+                row["account_id"],
+                row["first_name"],
+                row["last_name"],
+                row["password"],
+                int(row["checking_balance"]),
+                int(row["savings_balance"]),
+                row.get("active", "True") == "True",
+                int(row.get("overdraft_count", 0))
+            )
+            self.customers[row["account_id"]] = customer
 
     
 # --------------------------------------------- Find Customer by ID  ---------------------------------------------
@@ -76,17 +78,21 @@ class BankSystem:
 
     def _rewrite_all_customers(self): # this method To avoid duplicates
 
-        with open(self.filename, mode="w", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(["account_id", "first_name", "last_name", "password", "checking_balance", "savings_balance"])
-            for customer in self.customers.values():
-                writer.writerow([
-                    customer.account_id,
-                    customer.first_name,
-                    customer.last_name,
-                    customer.password,
-                    customer.checking_account.get_balance(),
-                    customer.savings_account.get_balance()
-                ])
-                
+     with open(self.filename, mode="w", newline="") as file:
+         writer = csv.writer(file)
+         writer.writerow([
+            "account_id", "first_name", "last_name", "password", "checking_balance", "savings_balance", "active", "overdraft_count"
+        ])
+         for customer in self.customers.values():
+            writer.writerow([
+                customer.account_id,
+                customer.first_name,
+                customer.last_name,
+                customer.password,
+                customer.checking_account.get_balance(),
+                customer.savings_account.get_balance(),
+                customer.checking_account.active,   
+                customer.checking_account.overdraft_count  
+            ])
+            
 # -----------------------------------------------------------------------------------------------------------------

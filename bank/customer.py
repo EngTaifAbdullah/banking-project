@@ -14,13 +14,16 @@ class Customer:
         self.savings_account = Account(account_id, "savings", savings_balance, active, overdraft_count)
 
 
+
 # ----------------------------- Password -----------------------------
 
 
     def login(self, password):
      
-        return self.password == password
-    
+     if not self.checking_account.active:  
+        return False  
+     return self.password == password
+
 
 # -------------------- Deposit (checking, saving) --------------------
 
