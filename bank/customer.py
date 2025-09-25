@@ -3,16 +3,15 @@
 from bank.account import Account
 
 class Customer:
-    def __init__(self, account_id, first_name, last_name, password, checking_balance=0, savings_balance=0):
-      
+    def __init__(self, account_id, first_name, last_name, password, checking_balance=0, savings_balance=0, active=True, overdraft_count=0):
 
         self.account_id = account_id
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
-
-        self.checking_account = Account(account_id, "checking", checking_balance)
-        self.savings_account = Account(account_id, "savings", savings_balance)
+        
+        self.checking_account = Account(account_id, "checking", checking_balance, active, overdraft_count)
+        self.savings_account = Account(account_id, "savings", savings_balance, active, overdraft_count)
 
 
 # ----------------------------- Password -----------------------------
