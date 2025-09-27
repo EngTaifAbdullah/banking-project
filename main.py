@@ -1,5 +1,3 @@
-
-
 from bank.bank_system import BankSystem
 
 def main():
@@ -13,27 +11,29 @@ def main():
 
         choice = input("🔹 Please Enter the service: ")
 
-
         if choice == "1":
-            first = input("First Name: ")
-            last = input("Last Name: ")
-            password = input("Password: ")
-            checking = int(input("Initial Checking Balance: "))
-            savings = int(input("Initial Savings Balance: "))
+            try:
+                first = input("First Name: ")
+                last = input("Last Name: ")
+                password = input("Password: ")
+                checking = int(input("Initial Checking Balance: "))
+                savings = int(input("Initial Savings Balance: "))
 
-            customer = bank.add_customer(first, last, password, checking, savings)
-            print(f"Customer Added Successfully with ID: {customer.account_id} ✅")
+                customer = bank.add_customer(first, last, password, checking, savings)
+                print(f"Customer Added Successfully with ID: {customer.account_id} ✅")
+                
+            except Exception as e:
+                print(f" Error: {e}")
 
 
 
         elif choice == "2":
             account_id = input("Enter Account ID: ")
             password = input("Enter Password: ")
-
             customer = bank.find_customer(account_id)
 
             if customer and customer.login(password):
-                print(f"\nWelcome ( {customer.first_name} {customer.last_name} ) Again ✨ !")
+                print(f"\nWelcome ( {customer.first_name} {customer.last_name} ) ✨ !")
 
                 while True:
                     print("\n----------------------------------- Customer Menu -----------------------------------")
@@ -52,8 +52,6 @@ def main():
                         if sub_choice == "1":
                             print(f"Checking Balance: {customer.checking_account.get_balance()} 💵")
                             print(f"Savings Balance: {customer.savings_account.get_balance()} 💵")
-                           
-
 
 
                         elif sub_choice == "2":
@@ -63,13 +61,11 @@ def main():
                             print("Deposit Successful ✅ !")
 
 
-
                         elif sub_choice == "3":
                             amount = int(input("Enter Amount to Deposit in Savings: "))
                             customer.deposit_to_savings(amount)
                             bank._rewrite_all_customers()
                             print("Deposit Successful ✅ !")
-
 
 
                         elif sub_choice == "4":
@@ -79,14 +75,11 @@ def main():
                             print("Withdrawal Successful ✅ !")
 
 
-
                         elif sub_choice == "5":
                             amount = int(input("Enter Amount to Withdraw from Savings: "))
                             customer.withdraw_from_savings(amount)
                             bank._rewrite_all_customers()
                             print("Withdrawal Successful ✅ !")
-
-
 
 
                         elif sub_choice == "6":
@@ -98,15 +91,15 @@ def main():
                             if opt == "a":
                                 customer.transfer_to_savings(amount)
                                 bank._rewrite_all_customers()
-                                print("Transfer Checking To Savings Successful ✅ !")
+                                print("Transfer To Savings Successful ✅ !")
 
                             elif opt == "b":
                                 customer.transfer_to_checking(amount)
                                 bank._rewrite_all_customers()
-                                print("Transfer Savings To Checking Successful ✅ !")
-                            else:
-                                print("Invalid Option")
+                                print("Transfer To Checking Successful ✅ !")
 
+                            else:
+                                print("Invalid Option ❌")
 
 
 
@@ -117,29 +110,26 @@ def main():
                             bank.transfer_between_customers(customer.account_id, target_id, from_account, amount)
                             print(f"Transfer Successful! To Customer ID {target_id} ✅ ")
 
-
-
                         elif sub_choice == "8":
-                            print("Logged out")
+                            print("Logged out Successfully")
                             break
 
                         else:
                             print("Invalid choice, try again ❌")
 
                     except Exception as e:
-                        print(f"❌ Error: {e}")
+                        print(f"Error: {e}")
             else:
                 print("Invalid account ID or password ❌")
 
         elif choice == "3":
             print("Goodbye 👋")
             break
-
         else:
             print("Invalid choice, try again ❌")
 
+
 if __name__ == "__main__":
     main()
-
 
 # python main.py

@@ -6,6 +6,8 @@ from bank.customer import Customer
 
 class TestCustomer(unittest.TestCase):
 
+
+    # This method is executed automatically before each test (Write it once and use it in all tests)
     def setUp(self):
 
         self.customer1 = Customer("10001", "Taif", "Abdullah", "12345", 1500, 300) # Taif 's account 
