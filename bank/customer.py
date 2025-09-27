@@ -1,4 +1,4 @@
-#--------------------------------------- INCLOUD INFORMATIONS ABOUT THE CUSTEOMER ---------------------------------------
+# ------------------------------------------------------------ INCLOUD INFORMATIONS ABOUT THE CUSTEOMER ------------------------------------------------------------
 
 from bank.account import Account
 
@@ -15,7 +15,7 @@ class Customer:
 
 
 
-# ------------------------------------- Password -------------------------------------
+# -------------------------------------------------------------- Password --------------------------------------------------------------
 
 
     def login(self, password):
@@ -25,7 +25,7 @@ class Customer:
      return self.password == password
 
 
-# ----------------------------- Deposit (checking, saving) -----------------------------
+# ----------------------------------------------------- Deposit (checking, saving) -----------------------------------------------------
 
 
     def deposit_to_checking(self, amount):
@@ -36,7 +36,7 @@ class Customer:
         return self.savings_account.deposit(amount)
     
 
-# ----------------------------- Withdraw (checking, saving) -----------------------------
+# ----------------------------------------------------- Withdraw (checking, saving) -----------------------------------------------------
 
 
     def withdraw_from_checking(self, amount):
@@ -47,40 +47,45 @@ class Customer:
         return self.savings_account.withdraw(amount)
     
     
-# ----------------------------- Transfer (checking, saving) -----------------------------
+# ----------------------------------------------------- Transfer (checking, saving) -----------------------------------------------------
 
 
     def transfer_to_savings(self, amount):
        
-        self.checking_account.withdraw(amount) 
-        self.savings_account.deposit(amount)
+        new_checking = self.checking_account.withdraw(amount)     # I take it the amount from checking (withdraw) 
+        new_saving = self.savings_account.deposit(amount)         # I put it in saving (deposit)
+
+        return new_checking, new_saving                           # updating the amount in saving and checking
 
 
     def transfer_to_checking(self, amount):
-       
-        self.savings_account.withdraw(amount)
-        self.checking_account.deposit(amount)
+
+        new_saving = self.savings_account.withdraw(amount)
+        new_checking = self.checking_account.deposit(amount)
+        
+        
+        return new_checking, new_saving
 
 
-# ----------------------------- Transfer to another User -----------------------------
+# ----------------------------------------------------- Transfer to another User -----------------------------------------------------
 
 
     def transfer_to_another_customer(self, target_customer, from_account, amount): 
 
         if from_account == "checking":
             self.checking_account.withdraw(amount)
-            target_customer.checking_account.deposit(amount)
+            target_customer.checking_account.deposit(amount) # take the money from Mychacking (withdraw) and trasnfer to user (dapost)
 
 
-        elif from_account == "savings":  # Here I added 2 way to transfer to another user (transfer from saving or checking)
+        elif from_account == "savings":             # Here I added 2 way to transfer to another user (transfer from saving or checking)
             self.savings_account.withdraw(amount)
-            target_customer.savings_account.deposit(amount)
+            target_customer.checking_account.deposit(amount)
             
 
         else:
-            raise ValueError("Invalid account type")
+            raise ValueError("Invalid Account Type")
 
 
-# ------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------------------------
 
 # python -m bank.customer

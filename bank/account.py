@@ -11,35 +11,35 @@ class Account:
 
 
 
-# -------------------------------------- Deposit -------------------------------------
+# ------------------------------------------- Deposit ------------------------------------------
 
 
     def deposit(self, amount):
 
         if not self.active:
-            raise ValueError("Account is deactivated ❌")
+            raise ValueError("This Account is Deactivated ❌")
         
         if amount > 0:
             self.balance += amount
 
         else:
-            raise ValueError("The deposited amount must be greater than ZERO!")
+            raise ValueError("The Deposited Amount must be greater than ZERO!")
         return self.balance
 
 
-# -------------------------------------- Withdraw --------------------------------------
+# ------------------------------------------- Withdraw -------------------------------------------
 
 
     def withdraw(self, amount):
 
         if not self.active:
-            raise ValueError("This account is deactivated")
+            raise ValueError("This Account is Deactivated ❌")
 
         if amount <= 0:
             raise ValueError("Withdrawal must be greater than ZERO!")
 
-        if self.balance >= amount:
-           self.balance -= amount
+        if self.balance >= amount:  # the balance must be greter the amount 
+           self.balance -= amount   
            return self.balance
 
 
@@ -47,22 +47,25 @@ class Account:
         total = amount + fee
         new_balance = self.balance - total
 
+        # You have 2 resons for deactivate you account :
 
         if new_balance < -100:  
           self.active = False
-          raise ValueError("Withdrawal denied!! Limit -100 reached. Account Deactivated.")
+          raise ValueError("The Account Deactivated due to reaching the limit -100")
 
-
-        self.balance = new_balance
+        # Then after the customer withdraw amount, the new balance is calculated (after the overdraft).
+        self.balance = new_balance  
         self.overdraft_count += 1
 
+
+        # If two amounts are withdrawn your account will be Deactivated!
         if self.overdraft_count >= 2:
            self.active = False
  
 
         return self.balance
 
-# --------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
 
     def get_balance(self):
         return self.balance

@@ -4,8 +4,8 @@ import unittest
 from bank.account import Account
 
 
-
 class TestAccount(unittest.TestCase):
+    
     
 
 # -----------------------------  Deposit Test (Checking, Saving)  -----------------------------
@@ -48,21 +48,21 @@ class TestAccount(unittest.TestCase):
     def test_withdraw_overdraft_once(self):
 
         acc = Account("10005", "checking", 50)
-        acc.withdraw(70)  
+        acc.withdraw(70)                            # Logically it will become -20
         self.assertEqual(acc.get_balance(), -55)
-        self.assertEqual(acc.overdraft_count, 1)
+        self.assertEqual(acc.overdraft_count, 1)    # You are in overdraft, first attempt
 
 
 
     def test_withdraw_overdraft_twice(self):
 
         acc = Account("10006", "checking", 0)
-        acc.withdraw(50)  
-        acc.withdraw(10)  
+        acc.withdraw(50)                            # (-50) + (-35) = -85
+        acc.withdraw(10)                            # (-95) + (-35) = -130
 
         with self.assertRaises(ValueError):
-            acc.withdraw(5)
-
+            acc.withdraw(5)                         # The third attempt will show an error
+            
 
 # ---------------------------------- Withdraw Deactivation Test ---------------------------------
 
@@ -70,8 +70,9 @@ class TestAccount(unittest.TestCase):
     def test_account_deactivated(self):
 
         acc = Account("10007", "checking", 100, active=False)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValueError):          # You will show an error
             acc.deposit(50)
+
         with self.assertRaises(ValueError):
             acc.withdraw(10)
 

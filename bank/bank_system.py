@@ -1,4 +1,4 @@
-#----------------------------------------------  BANK SYSTEM  -------------------------------------------------
+#--------------------------------------------------------  BANK SYSTEM  -----------------------------------------------------------
 
 import csv
 import os
@@ -12,7 +12,8 @@ class BankSystem:
         self.customers = {}
         self.load_customers()
 
-# ----------------------------------------------- Add New Customer -----------------------------------------------
+# ------------------------------------------------------- Add New Customer -------------------------------------------------------
+
 
 
     def add_customer(self, first_name, last_name, password, checking_balance=0, savings_balance=0):
@@ -20,21 +21,23 @@ class BankSystem:
         new_id = str(10000 + len(self.customers) + 1)
         new_customer = Customer(new_id, first_name, last_name, password, checking_balance, savings_balance)
 
-        self.customers[new_id] = new_customer
-        self._rewrite_all_customers()  
+        self.customers[new_id] = new_customer           # save the new customer in customer dectionry with new ID
+        self._rewrite_all_customers()                   # outomaticlly updated the data to csv
         return new_customer
 
 
-# ------------------------------------------- Load Customers To CSV File --------------------------------------------
+
+# --------------------------------------------------- Load Customers To CSV File --------------------------------------------------
+
 
 
     def load_customers(self):
-        if not os.path.isfile(self.filename):
+        if not os.path.isfile(self.filename):           # to ensure the path is there. if not! stop the function
             return
 
         with open(self.filename, mode="r") as file:
-         reader = csv.DictReader(file)
-         for row in reader:
+         reader = csv.DictReader(file)                  # open the file AND will be close it when you finish
+         for row in reader:                             # read the row with ID like (1001,Taif,Abdullah,....)
             customer = Customer(
                 row["account_id"],
                 row["first_name"],
@@ -45,41 +48,46 @@ class BankSystem:
                 row.get("active", "True") == "True",
                 int(row.get("overdraft_count", 0))
             )
-            self.customers[row["account_id"]] = customer
+            self.customers[row["account_id"]] = customer     # Add the new customer in customer dectionary by ID
 
     
-# --------------------------------------------- Find Customer by ID  ---------------------------------------------
+
+# --------------------------------------------------- Find Customer by ID  ------------------------------------------------------
 
 
-    def find_customer(self, account_id):
+
+    def find_customer(self, account_id):                     # To lookig for the customer and easier to found it
         return self.customers.get(account_id)
 
 
-# ----------------------------------------- Transfer Between Customers -----------------------------------------
+
+# --------------------------------------------------- Transfer Between Customers -------------------------------------------------
+
 
 
     def transfer_between_customers(self, from_id, to_id, from_account, amount):
 
-        sender = self.find_customer(from_id)
-        receiver = self.find_customer(to_id)
+        sender = self.find_customer(from_id)                 # The sender my ID
+        receiver = self.find_customer(to_id)                 # The reciever his ID
 
-        if not sender:
-            raise ValueError(f"Sender with ID {from_id} not found")
+
         if not receiver:
             raise ValueError(f"Receiver with ID {to_id} not found")
 
         sender.transfer_to_another_customer(receiver, from_account, amount)
 
-        self._rewrite_all_customers()
+        self._rewrite_all_customers()                       # Update all balances of sender and receiver in CSV 
 
 
- # ------------------------------------ Rewrite All Customers ( Update CSV ) -----------------------------------
+
+ # ------------------------------------------- Rewrite All Customers ( Update CSV ) ----------------------------------------------
 
 
-    def _rewrite_all_customers(self): # this method To avoid duplicates
 
-     with open(self.filename, mode="w", newline="") as file:
-         writer = csv.writer(file)
+    def _rewrite_all_customers(self):                            # This method To avoid duplicates CSV
+
+     with open(self.filename, mode="w", newline="") as file:     # open the file for writing AND avoid writing with blanks line
+         writer = csv.writer(file)                               # To writing line by line in CSV file ,,, by Order and sequence
          writer.writerow([
             "account_id", "first_name", "last_name", "password", "checking_balance", "savings_balance", "active", "overdraft_count"
         ])
@@ -95,4 +103,5 @@ class BankSystem:
                 customer.checking_account.overdraft_count  
             ])
             
-# -----------------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------------------------------------
